@@ -20,9 +20,9 @@ Item {
     KeyModel {
         id:keyModel
     }
-    FontLoader {
-        source: "FontAwesome.otf"
-    }
+    //FontLoader {
+    //    source: "Klavika-Regular.otf"
+    //}
     QtObject {
         id:pimpl
         property bool shiftModifier: false
@@ -50,7 +50,7 @@ Item {
     Connections {
         target: InputEngine
         // Switch the keyboard layout to Numeric if the input mode of the InputEngine changes
-        onInputModeChanged: {
+        function onInputModeChanged() {
             pimpl.symbolModifier = ((InputEngine.inputMode == InputEngine.Numeric)
                                  || (InputEngine.inputMode == InputEngine.Dialable))
             if (pimpl.symbolModifier) {
@@ -119,8 +119,8 @@ Item {
                     anchors.left: parent.left
                     width: 1.25*pimpl.buttonWidth
                     height: pimpl.rowHeight
-                    font.family: "FontAwesome"
-                    text: "\uf062"
+                    //font.family: "FontAwesome"
+                    text: "⬆"
                     functionKey: true
                     onClicked: {
                         if (pimpl.symbolModifier) {
@@ -142,13 +142,13 @@ Item {
                 }
                 KeyButton {
                     id: backspaceKey
-                    font.family: "FontAwesome"
+                    //font.family: "FontAwesome"
                     color: "#1e1b18"
                     anchors.right: parent.right
                     width: 1.25*pimpl.buttonWidth
                     height: pimpl.rowHeight
                     text: "\x7F"
-                    displayText: "\uf177"
+                    displayText: "←"
                     inputPanel: root
                     repeat: true
                 }
@@ -162,8 +162,8 @@ Item {
                     color: "#1e1b18"
                     width: 1.25*pimpl.buttonWidth
                     height: pimpl.rowHeight
-                    font.family: "FontAwesome"
-                    text: "\uf078"
+                    //font.family: "FontAwesome"
+                    text: "×"
                     functionKey: true
                     onClicked: {
                         Qt.inputMethod.hide()
